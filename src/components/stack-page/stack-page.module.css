@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    column-gap: 12px;
+    justify-content: center;
+}
+
+.input {
+    max-width: 377px;
+}
+
+.marginBtn {
+    margin-left: 68px;
+}
+
+.circles {
+    max-width: 944px;
+    width: max-content;
+    margin: 78px auto 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 78px 16px;
+    flex-wrap: wrap;
+}
