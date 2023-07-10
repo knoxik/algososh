@@ -52,14 +52,14 @@ export const ListPage: React.FC = () => {
     setInputValue(target.value);
     setDisAddHead(target.value.length <= 0);
     setDisAddTail(target.value.length <= 0);
-    setDisAddAt(!(target.value.length > 0 && inputIndex.length > 0))
+    setDisAddAt(!(target.value.length > 0 && inputIndex.length > 0 && parseInt(inputIndex) <= linkedList.getSize()))
   }
 
   const onChangeIndex = (evt: ChangeEvent<HTMLInputElement>) => {
     const target = evt.target;
     setInputIndex(target.value);
-    setDisDelAt(target.value.length <= 0);
-    setDisAddAt(!(target.value.length > 0 && inputValue.length > 0))
+    setDisDelAt(!(target.value.length > 0 && parseInt(target.value) <= linkedList.getSize() - 1));
+    setDisAddAt(!(target.value.length > 0 && inputValue.length > 0 && parseInt(target.value) <= linkedList.getSize()))
   }
 
   const enableBtnsAfterHandleAdd = () => {
@@ -73,7 +73,7 @@ export const ListPage: React.FC = () => {
 
   const handleAdd = async (method: string) => {
     setLoaderAddHead(method === 'head');
-    setLoaderAddTail(method === 'taild');
+    setLoaderAddTail(method === 'tail');
     const value = inputValue;
     setInputValue('');
     setInputIndex('');
@@ -100,7 +100,7 @@ export const ListPage: React.FC = () => {
       propsArr[0].head = <Circle letter={value} state={ElementStates.Changing} isSmall={true} />;
       linkedList.prepend(value);
     } else {
-      propsArr[linkedList.getSize() - 1].tail = <Circle letter={value} state={ElementStates.Changing} isSmall={true} />;
+      propsArr[linkedList.getSize() - 1].head = <Circle letter={value} state={ElementStates.Changing} isSmall={true} />;
       linkedList.append(value);
     }
     
@@ -113,7 +113,13 @@ export const ListPage: React.FC = () => {
       propsArr[0].head = '';
       propsArr.unshift({head: 'head', tail: '', letter: value, state: ElementStates.Modified});
     } else {
-      index = linkedList.getSize() - 1;
+      const size = linkedList.getSize();
+      index = size - 1;
+      if (size === 2) {
+        propsArr[index - 1].head = 'head';
+      } else {
+        propsArr[index - 1].head = '';
+      }
       propsArr[index - 1].tail = '';
       propsArr.push({head: '', tail: 'tail', letter: value, state: ElementStates.Modified})
     }
