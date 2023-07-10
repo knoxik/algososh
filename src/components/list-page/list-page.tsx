@@ -11,6 +11,8 @@ import { ChangeEvent } from "react";
 import { delay } from "../../utils/delay";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 
+const MAX_VALUE_LEN = 4;
+
 export const ListPage: React.FC = () => {
   const [inputValue, setInputValue] = React.useState('');
   const [inputIndex, setInputIndex] = React.useState('');
@@ -314,7 +316,7 @@ export const ListPage: React.FC = () => {
   return (
     <SolutionLayout title="Связный список">
       <div className={Styles.wrapper}>
-        <Input placeholder='Введите значение' value={inputValue} isLimitText={true} maxLength={4} extraClass={Styles.input} onChange={onChangeValue}/>
+        <Input placeholder='Введите значение' value={inputValue} isLimitText={true} maxLength={MAX_VALUE_LEN} extraClass={Styles.input} onChange={onChangeValue}/>
         <Button text='Добавить в head' disabled={disAddHead} isLoader={loaderAddHead} onClick={() => handleAdd('head')} />
         <Button text='Добавить в tail' disabled={disAddTail} isLoader={loaderAddTail} onClick={() => handleAdd('tail')} />
         <Button text='Удалить из head' disabled={disDeleteHead} isLoader={loaderDelHead} onClick={() => handleDelete('head')} />

@@ -60,7 +60,7 @@ export const SortingPage: React.FC = () => {
   }
 
   const resetToDefaultColor = (arr: {value: number, color:ElementStates}[]) => {
-    arr.map(obj => {
+    arr.forEach(obj => {
       obj.color = ElementStates.Default
     })
     return arr

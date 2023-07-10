@@ -3,13 +3,15 @@ import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import Styles from './stack-page.module.css';
-import { ChangeEvent, MouseEvent } from "react";
+import { ChangeEvent } from "react";
 import { Circle } from "../ui/circle/circle";
 import { stack } from "../../types/stack";
 import { delay } from "../../utils/delay";
 import { ElementStates } from "../../types/element-states";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { v4 as uuidv4 } from 'uuid';
 
+const MAX_VALUE_LEN = 4;
 
 type TRes = {
   value?: string,
@@ -25,7 +27,6 @@ export const StackPage: React.FC = () => {
   const [visible, setVisible] = React.useState(false);
   const [resArr, setResArr] = React.useState<TRes[]>([])
   const [value, setValue] = React.useState('');
-  const { v4: uuidv4 } = require('uuid');
   
   const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const target = evt.target;
@@ -84,7 +85,7 @@ export const StackPage: React.FC = () => {
   return (
     <SolutionLayout title="Стек">
       <div className={Styles.wrapper}>
-        <Input placeholder='Введите значение' value={value} isLimitText={true} maxLength={4} extraClass={Styles.input} onChange={onChange}/>
+        <Input placeholder='Введите значение' value={value} isLimitText={true} maxLength={MAX_VALUE_LEN} extraClass={Styles.input} onChange={onChange}/>
         <Button text='Добавить' disabled={disabledAdd} isLoader={loaderAdd} onClick={handleAdd} />
         <Button text='Удалить' disabled={disabledDelete} isLoader={loaderDelete} onClick={handleDelete} />
         <Button text='Очистить' disabled={disabledClear} isLoader={false} onClick={handleClear} extraClass={Styles.marginBtn}/>

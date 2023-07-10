@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
@@ -8,7 +8,9 @@ import { ChangeEvent, MouseEvent } from 'react';
 import { ElementStates } from "../../types/element-states";
 import { DELAY_IN_MS } from "../../constants/delays";
 import { CircleProps } from "../ui/circle/circle";
+import { v4 as uuidv4 } from 'uuid';
 
+const MAX_VALUE_LEN = 11;
 
 export const StringComponent: React.FC = () => {
   const [disabled, setDisabled] = React.useState(true);
@@ -16,7 +18,6 @@ export const StringComponent: React.FC = () => {
   const [visible, setVisible] = React.useState(false);
   const [text, setText] = React.useState('');
   const [circleOptions, setCircleOptions] = React.useState<CircleProps[]>([{}])
-  const { v4: uuidv4 } = require('uuid');
 
   const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const target = evt.target;
@@ -78,7 +79,7 @@ export const StringComponent: React.FC = () => {
   return (
     <SolutionLayout title="Строка">
       <div className={Styles.wrapper}>
-        <Input value={text} isLimitText={true} maxLength={11} extraClass={Styles.input} onChange={onChange}/>
+        <Input value={text} isLimitText={true} maxLength={MAX_VALUE_LEN} extraClass={Styles.input} onChange={onChange}/>
         <Button text='Развернуть' disabled={disabled} isLoader={loader} onClick={onClick} />
       </div>
 

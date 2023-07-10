@@ -199,48 +199,4 @@ class LinkedList<T> implements ILinkedList<T> {
     }
 }
 
-const removeElements = (head: Node<number> | null, val: number): Node<number> | null => {
-    let dummyHead = new Node(0); // добавим в начало пустой узел
-    dummyHead.next = head;
-    let curr = dummyHead;
-  
-    if (head === null) {
-      return null;
-    }
-  
-    if (head.next === null) {
-      if (head.value === val) {
-          dummyHead.next = null;
-          return dummyHead.next;
-      } else {
-          return dummyHead.next;
-      }
-    }
-    let prev = curr;
-    while (curr) {
-      
-      if (curr.value === val) {
-          if (curr.next !== null) {
-              curr.value = curr.next.value;
-              let next_node = curr.next;
-              curr = prev;
-              curr.next = next_node;
-          } else {
-              curr = prev;
-              curr.next = null;
-              return dummyHead.next;
-          }
-      }
-      prev = curr;
-      
-      if (curr.next === null) {
-          return dummyHead.next
-      } else {
-          curr = curr.next;
-      }
-    }
-  
-    return dummyHead.next; // возвращаем список без пустого узла
-};
-
 export const linkedList = new LinkedList<string>();
