@@ -7,7 +7,7 @@ const CIRCLE_MODIFY = 'circle_modified';
 
 describe('Тестирование stack', function() {
     beforeEach(function() {
-        cy.visit('http://localhost:3000/stack');
+        cy.visit('/stack');
     });
 
     it('Кнопка добавления недоступна в пустом инпуте', function() {

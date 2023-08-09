@@ -1,29 +1,29 @@
 describe('app works correctly with routes', function() {
     before(function() {
-        cy.visit('http://localhost:3000');
+        cy.visit('/');
     });
   
     it('should open string page', function() {
-        cy.visit('http://localhost:3000/recursion');
+        cy.visit('/recursion');
     });
 
     it('should open fibonacci page', function() {
-        cy.visit('http://localhost:3000/fibonacci');
+        cy.visit('/fibonacci');
     });
 
     it('should open list page', function() {
-        cy.visit('http://localhost:3000/list');
+        cy.visit('/list');
     });
 
     it('should open queue page', function() {
-        cy.visit('http://localhost:3000/queue');
+        cy.visit('/queue');
     });
 
     it('should open sorting page', function() {
-        cy.visit('http://localhost:3000/sorting');
+        cy.visit('/sorting');
     });
 
     it('should open stack page', function() {
-        cy.visit('http://localhost:3000/stack');
+        cy.visit('/stack');
     });
 });

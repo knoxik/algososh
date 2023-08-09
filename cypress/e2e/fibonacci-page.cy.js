@@ -3,7 +3,7 @@ import { SHORT_DELAY_IN_MS } from '../../src/constants/delays'
 
 describe('Тестирование алгоритма fibonacci', function() {
     beforeEach(function() {
-        cy.visit('http://localhost:3000/fibonacci');
+        cy.visit('/fibonacci');
     });
 
     it('Кнопка недоступна в пустом инпуте', function() {

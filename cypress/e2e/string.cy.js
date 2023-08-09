@@ -7,7 +7,7 @@ const CIRCLE_MODIFY = 'circle_modified';
 
 describe('Тестирование алгоритма string', function() {
     beforeEach(function() {
-        cy.visit('http://localhost:3000/recursion');
+        cy.visit('/recursion');
     });
 
     it('Кнопка недоступна в пустом инпуте', function() {
