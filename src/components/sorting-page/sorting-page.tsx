@@ -144,7 +144,7 @@ export const SortingPage: React.FC = () => {
           randomArr.map(({value, color}) => (
             <div className={Styles.wrapper} key={nanoid()}>
               <div className={`${Styles.rectangle} ${Styles[color]}`} style={{minHeight: calcMinHeight(value)}}></div>
-              <p className={Styles.number}>{value}</p>
+              <p data-testid='sort-value' className={Styles.number}>{value}</p>
             </div>
           ))
         }
